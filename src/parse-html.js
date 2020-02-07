@@ -3,9 +3,9 @@ import Mercury from '@postlight/mercury-parser';
 import { corsSuccessResponse, corsErrorResponse, runWarm } from './utils';
 
 const parseHtml = async ({ body }, context, cb) => {
-  const { url, html } = JSON.parse(body);
+  const { url, html, contentType } = JSON.parse(body);
 
-  const result = await Mercury.parse(url, { html });
+  const result = await Mercury.parse(url, { contentType, html });
 
   return cb(
     null,
